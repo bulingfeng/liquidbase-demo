@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="1" author="bulingfeng@gmail.com" >
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="test_table表已存在" onErrorMessage="执行1:LinRuChang的前置条件过程中发生异常">
+            <not>
+                <tableExists tableName="test_table"></tableExists>
+            </not>
+        </preConditions>
+        <comment>创建表test_table</comment>
+        <sql>
+            CREATE TABLE `test_table`
+            (
+            `id`          char(32) CHARACTER SET utf8 COLLATE utf8_bin        NOT NULL COMMENT '主键',
+            `name`        varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '角色名',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='liquibase测试表'
+        </sql>
+    </changeSet>
+
+
+    <changeSet id="2" author="bulingfeng@gmail.com" >
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="test_table3表已存在" onErrorMessage="执行3:LinRuChang的前置条件过程中发生异常">
+            <not>
+                <tableExists tableName="test_table3"></tableExists>
+            </not>
+        </preConditions>
+        <comment>创建表test_table3</comment>
+        <sql>
+            CREATE TABLE `test_table3`
+            (
+            `id`          char(32) CHARACTER SET utf8 COLLATE utf8_bin        NOT NULL COMMENT '主键',
+            `name`        varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '角色名',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='liquibase测试表'
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="bulingfeng@gmail.com" id="3">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="article表已存在" onErrorMessage="执行1:LinRuChang的前置条件过程中发生异常">
+            <not>
+                <tableExists tableName="article2"></tableExists>
+            </not>
+        </preConditions>
+        <comment>创建表article2</comment>
+        <createTable remarks="文章表" tableName="article2">
+            <column name="id" remarks="主键id" type="CHAR(32)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="status" remarks="文章状态" type="VARCHAR(255)"/>
+            <column name="title" remarks="文章标题" type="VARCHAR(100)"/>
+            <column defaultValue="1" name="type" remarks="文章内容类型" type="VARCHAR(255)"/>
+            <column name="content" remarks="文章内容" type="TEXT"/>
+            <column name="abbreviation_content" remarks="缩略文章，最大200字符" type="VARCHAR(255)"/>
+            <column name="img_url" remarks="列表文章的图片显示" type="VARCHAR(1000)"/>
+            <column name="img_urls" remarks="文章内部图片 - 七彩牛CDN" type="VARCHAR(1500)"/>
+            <column name="check_num" remarks="文章被查看次数" type="INT"/>
+            <column name="like_num" remarks="当前文章被点赞数" type="INT"/>
+            <column name="not_like_num" remarks="当前文章不喜欢数" type="INT"/>
+            <column name="create_time" remarks="文章创建时间 - 格式 - yyyyMMddHHmmss" type="CHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_by" remarks="创建者 - 冗余字段 - user表的nickName" type="VARCHAR(255)"/>
+            <column name="update_time" remarks="记录更新时间 - 格式 - yyyyMMddHHmmss" type="CHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_del" remarks="该记录是否被逻辑删除：0未删除 1逻辑删除" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_violation" remarks="文章是否违规：0未违规 1违规 - 违规不可显示" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="version" remarks="乐观锁(记录的被修改数)" type="INT"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
