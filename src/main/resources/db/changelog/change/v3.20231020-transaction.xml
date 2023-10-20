@@ -9,8 +9,14 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <includeAll path="change" relativeToChangelogFile="true"  />
 
-<!--    <include file="change/v1.20220702.xml" relativeToChangelogFile="true"/>-->
+    <changeSet id="5" author="bulingfeng@gmail.com"  runInTransaction="true">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="插入失败" onErrorMessage="执行changeSet,id=4过程中发生异常">
+        </preConditions>
+        <comment>插入语句</comment>
+        <sql>
+            insert into test_table(name) values('name5');
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>

@@ -3,6 +3,8 @@ spring:
     enabled: true
     change-log: classpath:/db/changelog/changelog-master.xml
     drop-first: false
+  logging:
+    level: debug
 
   datasource:
     username: root
