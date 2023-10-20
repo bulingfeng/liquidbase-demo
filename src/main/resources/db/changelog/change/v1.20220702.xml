@@ -51,6 +51,7 @@
             <not>
                 <tableExists tableName="article2"></tableExists>
             </not>
+<!--            <sqlCheck expectedResult="1">select count(*) from article2</sqlCheck>-->
         </preConditions>
         <comment>创建表article2</comment>
         <createTable remarks="文章表" tableName="article2">

@@ -39,6 +39,13 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>8.0.31</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>4.3.5</version>
+            <type>maven-plugin</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,6 +54,8 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+
         </plugins>
     </build>
 

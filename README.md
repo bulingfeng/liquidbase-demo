@@ -4,10 +4,18 @@
 
 - https://www.pkslow.com/archives/liquibase
 - https://juejin.cn/post/7081583157371207716
+- https://www.cnblogs.com/gao241/archive/2013/03/20/2971526.html
+- https://springboot.io/t/topic/2952  回滚
+- https://docs.liquibase.com/change-types/create-table.html 创建表的一些信息
 
 比如大家都喜欢忘某个版本的游戏，结果技术告诉你两个消息，一个好消息，一个坏消息
 好消息是：代码和模型都还在；
 坏消息是：当时的那一版数据库已经找不到或者恢复不了了
+
+现在项目中是否会遇到这样的问题
+
+- 在DEV环境测试了一波代码没有问题，然后转化到TEST环境，这个时候代码无缝迁移过去了，但是数据库中的表结构，或者一些字典值总是忘记添加，然后你又的取找对应的sql。而且由于是多个人同时开发的，总会难免遗漏一些sql。然后你又发到RELASE环境，同样的问题又发生了。
+- 代码可以通过打TAG来快速的切换到某个节点，但是如果数据库不能做到，那么一切都是徒劳。
 
 
 
@@ -55,11 +63,26 @@ liquibase是有一个主文件的，这个主文件内可以执行你想要的sq
 id+author+fileanme形成来作为唯一标识。
 ```
 
-MD5SUM是根据id+author+filename中的语句形成的一个MD5值。如果已经运行过的sql，你修改了sql内容，这个时候就会报错。
+MD5SUM是根据id+author+filename中的语句形成的一个MD5值。如果已经运行过的sql，你修改了sql内容，这个时候就会报错。此时只是以运行sql的内容为准，多加空格之类的并不能影响MD5SUM的值。
+
+
 
 一个changeset里面的sql可以放多个，这样就可以运行了。
 
 <sq></sql>标签和使用xml来定义sql语句相比，使用<sql>标签更加的通俗易懂，但是xml更加的结构化，并且能够实现复杂的功能，比如可以当满足某个条件的时候执行一个sql。
+
+举几个例子来说：
+
+> 1. 可以在java代码中实现一个类来做数据迁移，而sql可能不能满足，而xml可以满足。
+> 2. 如果是复杂的sql的话，可以使用<sqlFile>来引用sql，使sql和xml做分离。
+
+### DATABASECHANGELOGLOCK
+
+顾名思义这个表是运行Liquibase的一个lock表，如果LOCKED=1,则说明有人在执行，当多个人同时执行的时候会报错的。
+
+当LOCKED这个字段的值设置为1的时候，那么别的应用就会等待。直到其释放锁。
+
+### Liquibase和Maven结合来做CI/CD
 
 
 
