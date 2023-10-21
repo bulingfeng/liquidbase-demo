@@ -16,8 +16,15 @@
         <comment>插入语句</comment>
         <sql>
             insert into test_table(name) values('name5');
-            insert into test_table(id,name) values('hello','name6');
         </sql>
     </changeSet>
 
+        <!--测试事务-->
+<!--    <changeSet id="6" author="bulingfeng@gmail.com"  runInTransaction="true">-->
+<!--        <comment>测试</comment>-->
+<!--        <sql>-->
+<!--            insert into test_table(name) values('transaction-success');-->
+<!--            insert into test_table(name) values('hello','transaction-fail');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 </databaseChangeLog>
