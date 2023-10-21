@@ -8,6 +8,17 @@
 - https://springboot.io/t/topic/2952  回滚
 - https://docs.liquibase.com/change-types/create-table.html 创建表的一些信息
 
+## 写ppt的时候先总分总的模式来进行编写
+
+1. 为什么要使用liquibase
+2. liquibase一些基本概念介绍
+3. 实践和使用liquibase
+4. liquibase来实现回滚
+
+
+
+
+
 
 
 比如大家都喜欢忘某个版本的游戏，结果技术告诉你两个消息，一个好消息，一个坏消息
@@ -120,7 +131,35 @@ MD5SUM是根据id+author+filename中的语句形成的一个MD5值。如果已�
 liquibase update-to-tag --tag=version_test_rollback  --changelog-file=changelog-master.xml
 ```
 
+### mvn中使用rollback
+
+**注意事项，这里必须使用cmd的命令来进行，如果使用idea自带的terminal是运行不了的**
+
+```
+mvn liquibase:rollback -Dliquibase.rollbackTag=version_test_rollback
+```
+
+```
+mvn liquibase:rollback -Dliquibase.rollbackCount=1
+```
+
+```
+mvn liquibase:updateToTag -Dliquibase.toTag=v1.0
+```
+
+帮助命令
+
+```linux
+mvn liquibase:help
+
+mvn liquibase mvn liquibase:changelogSyncToTag --help
+```
+
 回滚的参考文档
+
+回滚的时候有一个坑，就是你运行的位置决定了保存到数据库中FileName的位置。
+
+
 
 ```
 https://docs.liquibase.com/commands/home.html#database-rollback-commands

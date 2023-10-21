@@ -10,7 +10,7 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 
-    <changeSet id="1" author="bulingfeng@gmail.com" >
+    <changeSet id="v1.20231021-create-table-1" author="bulingfeng@gmail.com" >
         <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="test_table表已存在" onErrorMessage="执行1:LinRuChang的前置条件过程中发生异常">
             <not>
                 <tableExists tableName="test_table"></tableExists>
@@ -25,12 +25,15 @@
             PRIMARY KEY (`id`) USING BTREE
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin COMMENT='liquibase测试表';
         </sql>
+        <rollback>
+            drop table test_table;
+        </rollback>
     </changeSet>
 
 
 
 
-    <changeSet author="bulingfeng@gmail.com" id="3">
+    <changeSet id="v1.20231021-create-table-2" author="bulingfeng@gmail.com" >
         <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="department表已存在" onErrorMessage="执行前置条件过程中发生异常">
             <not>
                 <tableExists tableName="department"></tableExists>

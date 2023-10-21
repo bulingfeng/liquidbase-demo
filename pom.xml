@@ -17,6 +17,12 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <description>Liquibase Project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <!-- Liquibase properties -->
+        <liquibase-maven-plugin.version>4.16.1</liquibase-maven-plugin.version>
+        <mysql.version>8.0.31</mysql.version>
+        <db.url>jdbc:mysql://localhost:3306/db-test</db.url>
+        <db.username>root</db.username>
+        <db.password>123456</db.password>
     </properties>
     <dependencies>
         <dependency>
@@ -26,6 +32,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
+            <version>4.24.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -43,7 +50,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-maven-plugin</artifactId>
-            <version>4.3.5</version>
+            <version>4.24.0</version>
             <type>maven-plugin</type>
         </dependency>
     </dependencies>
@@ -55,35 +62,30 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
+            <!--配置liquibase的插件-->
+            <plugin>
+                <!-- Liquibase plugin -->
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase-maven-plugin.version}</version>
+                <configuration>
+                    <changeLogFile>./db/changelog/changelog-master.xml</changeLogFile>
 
-<!--            <plugin>-->
-<!--                <groupId>org.liquibase</groupId>-->
-<!--                <artifactId>liquibase-maven-plugin</artifactId>-->
-<!--                <version>3.6.3</version>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash;指定执行主文件 &ndash;&gt;-->
-<!--                    &lt;!&ndash;<changeLogFile>${basedir}/src/main/resources/liquibase/master_changelog.xml</changeLogFile>&ndash;&gt;-->
-<!--                    &lt;!&ndash;<diffChangeLogFile>${basedir}/src/main/resources/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>&ndash;&gt;-->
-<!--                    &lt;!&ndash;<outputChangeLogFile>${basedir}/src/main/resources/liquibase/changelog/changelog_original.xml</outputChangeLogFile>&ndash;&gt;-->
-
-<!--                    <propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>-->
-
-<!--                    <dropFirst>false</dropFirst>-->
-<!--                    <verbose>true</verbose>-->
-<!--                    <logging>debug</logging>-->
-<!--                    &lt;!&ndash; 是否需要弹出确认框 &ndash;&gt;-->
-<!--                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>-->
-<!--                    &lt;!&ndash;输出文件的编码 &ndash;&gt;-->
-<!--                    <outputFileEncoding>UTF-8</outputFileEncoding>-->
-<!--                    &lt;!&ndash;执行的时候是否显示详细的参数信息 &ndash;&gt;-->
-<!--                    <verbose>true</verbose>-->
-<!--                    &lt;!&ndash;是否每次都重新加载properties &ndash;&gt;-->
-<!--                    <propertyFileWillOverride>true</propertyFileWillOverride>-->
-<!--                    <rollbackTag>${project.version}</rollbackTag>-->
-<!--                    <tag>${project.version}</tag>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-
+                    <!-- DB connection config -->
+                    <driver>com.mysql.cj.jdbc.Driver</driver>
+                    <url>${db.url}</url>
+                    <username>${db.username}</username>
+                    <password>${db.password}</password>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
 
         </plugins>
     </build>
