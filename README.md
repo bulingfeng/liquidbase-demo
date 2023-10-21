@@ -126,6 +126,12 @@ liquibase update-to-tag --tag=version_test_rollback  --changelog-file=changelog-
 https://docs.liquibase.com/commands/home.html#database-rollback-commands
 ```
 
+参考中文文档
+
+```
+https://www.cnblogs.com/sanri1993/p/12125280.html
+```
+
 
 
 ## 疑问
