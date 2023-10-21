@@ -50,6 +50,7 @@
 
 ### 一些基本的概念
 
+- databaseChangeLog
 - changeset
 
 
@@ -100,6 +101,30 @@ MD5SUM是根据id+author+filename中的语句形成的一个MD5值。如果已�
 ### Liquibase和Maven结合来做CI/CD
 
 
+
+### 回滚
+
+### update-to-tage
+
+> 这个命令可以把数据恢复到某个tag的时候。
+>
+> 需要注意的是，以下这个命令在win10的idea中执行是没有效果的，会报错:
+>
+> > liquibase : 无法将“liquibase”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确.
+>
+> 但是打开cmd命令执行是没有问题的。
+>
+> 执行的时候需要你配置文件liquibase.properties的位置执行
+
+```
+liquibase update-to-tag --tag=version_test_rollback  --changelog-file=changelog-master.xml
+```
+
+回滚的参考文档
+
+```
+https://docs.liquibase.com/commands/home.html#database-rollback-commands
+```
 
 
 
