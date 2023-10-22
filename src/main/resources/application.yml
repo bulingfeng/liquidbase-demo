@@ -11,3 +11,11 @@ spring:
     password: 123456
     url: jdbc:mysql://localhost:3306/db-test
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  # postgress配置
+#  datasource:
+#    username: postgres
+#    password: 123456
+#    url: jdbc:postgresql://127.0.0.1:5432/postgres
+#    driver-class-name: org.postgresql.Driver

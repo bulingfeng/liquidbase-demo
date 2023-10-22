@@ -53,6 +53,21 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>4.24.0</version>
             <type>maven-plugin</type>
         </dependency>
+
+
+        <!-- 数据库驱动依赖 -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- 数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

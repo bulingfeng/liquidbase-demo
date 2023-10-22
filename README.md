@@ -133,6 +133,8 @@ liquibase update-to-tag --tag=version_test_rollback  --changelog-file=changelog-
 
 ### mvn中使用rollback
 
+像这类的高级操作，推荐使用命令行来进行操作。命令行的操作比maven插件的更丰富，功能更强大（而且有些是付费才有的）。
+
 **注意事项，这里必须使用cmd的命令来进行，如果使用idea自带的terminal是运行不了的**
 
 ```
