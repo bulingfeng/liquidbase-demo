@@ -9,21 +9,8 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <changeSet id="5" author="bulingfeng@gmail.com"  runInTransaction="true">
 
-        <comment>插入语句</comment>
-        <sql>
-            insert into test_table(name) values('transaction-id-5');
-        </sql>
-
+    <changeSet  author="bulingfeng@gmail.com"  id="tagDatabase-example">
+        <tagDatabase  tag="version_test_rollback"/>
     </changeSet>
-
-        <!--测试事务-->
-<!--    <changeSet id="6" author="bulingfeng@gmail.com"  runInTransaction="true">-->
-<!--        <comment>测试</comment>-->
-<!--        <sql>-->
-<!--            insert into test_table(name) values('transaction-success');-->
-<!--            insert into test_table(name) values('hello','transaction-fail');-->
-<!--        </sql>-->
-<!--    </changeSet>-->
 </databaseChangeLog>

@@ -9,9 +9,9 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-<!--    <includeAll path="change" relativeToChangelogFile="true"  />-->
+    <includeAll path="change" relativeToChangelogFile="true"  />
 
 <!--    <include file="change/v1.20231021-create-table.xml" relativeToChangelogFile="true"/>-->
-    <include file="change/v6.20231021-test.xml" relativeToChangelogFile="true"/>
+<!--    <include file="change/v6.20231021-test.xml" relativeToChangelogFile="true"/>-->
 
 </databaseChangeLog>
