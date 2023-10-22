@@ -11,7 +11,7 @@
 
 <!--    <includeAll path="change" relativeToChangelogFile="true"  />-->
 
-    <include file="change/v1.20231021-create-table.xml" relativeToChangelogFile="true"/>
-<!--    <include file="change/v6.20231021-test.xml" relativeToChangelogFile="true"/>-->
+<!--    <include file="change/v1.20231021-create-table.xml" relativeToChangelogFile="true"/>-->
+    <include file="change/v6.20231021-test.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

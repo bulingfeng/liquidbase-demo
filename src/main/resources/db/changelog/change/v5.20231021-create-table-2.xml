@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="7" author="bulingfeng@gmail.com" >
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="test_table_2表已存在" onErrorMessage="执行的前置条件过程中发生异常">
+            <not>
+                <tableExists tableName="test_table_2"></tableExists>
+            </not>
+        </preConditions>
+
+        <comment>test_table_2</comment>
+        <sql>
+            CREATE TABLE `test_table_2` (
+            `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+            `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL COMMENT '角色名',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin COMMENT='liquibase测试表';
+        </sql>
+        <rollback>
+            drop table test_table_2;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
