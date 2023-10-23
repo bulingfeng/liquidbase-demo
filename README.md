@@ -1,14 +1,8 @@
 # liquidbase-demo
 
-参考文章
 
-- https://www.pkslow.com/archives/liquibase
-- https://juejin.cn/post/7081583157371207716
-- https://www.cnblogs.com/gao241/archive/2013/03/20/2971526.html
-- https://springboot.io/t/topic/2952  回滚
-- https://docs.liquibase.com/change-types/create-table.html 创建表的一些信息
 
-## 写ppt的时候先总分总的模式来进行编写
+## 内容大纲
 
 1. 为什么要使用liquibase
 2. liquibase一些基本概念介绍
@@ -166,5 +160,14 @@ mvn liquibase mvn liquibase:changelogSyncToTag --help
 ## 使用liquibase的一些注意事项
 
 1. SQL迭代的基础上禁止在原有的changeSet上进行修改sql。因为liquibase是以id+author+filename作为唯一值的。
-2. 生产环境建议使用命令行来执行liquibase的语句。因为语句更灵活，而且命令更方便
-3. 
+2. 生产环境建议使用命令行来执行liquibase的语句。因为语句更灵活，而且命令更方便。
+3. 虽然<sql>标签使用很方面，但是要杜绝这种情况出现，因为这导致数据库没有迁移能力减弱。
+4. 从理论上来讲，生产环境是只允许DBA来进行操作liquibase的。
+
+### 参考文章
+
+- https://www.pkslow.com/archives/liquibase
+- https://juejin.cn/post/7081583157371207716
+- https://www.cnblogs.com/gao241/archive/2013/03/20/2971526.html
+- https://springboot.io/t/topic/2952  回滚
+- https://docs.liquibase.com/change-types/create-table.html 创建表的一些信息
