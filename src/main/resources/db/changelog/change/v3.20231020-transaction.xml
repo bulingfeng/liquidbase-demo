@@ -16,6 +16,9 @@
             insert into test_table(name) values('transaction-id-5');
         </sql>
 
+        <rollback>
+            delete from test_table where name='transaction-id-5';
+        </rollback>
     </changeSet>
 
         <!--测试事务-->

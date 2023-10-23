@@ -10,7 +10,7 @@
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 
-    <changeSet  author="bulingfeng@gmail.com"  id="tagDatabase-example">
-        <tagDatabase  tag="version_test_rollback"/>
+    <changeSet id="tagDatabase-example"  author="bulingfeng@gmail.com">
+        <tagDatabase  tag="v1.0"/>
     </changeSet>
 </databaseChangeLog>

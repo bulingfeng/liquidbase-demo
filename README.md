@@ -17,10 +17,6 @@
 
 
 
-
-
-
-
 比如大家都喜欢忘某个版本的游戏，结果技术告诉你两个消息，一个好消息，一个坏消息
 好消息是：代码和模型都还在；
 坏消息是：当时的那一版数据库已经找不到或者恢复不了了
@@ -54,8 +50,6 @@
  3.在同行评审和批准之后，将功能分支与开发分支合并
  4.在Dev服务器上配置的CI / CD实现触发Liquibase进行数据库更新
  5.Liquibase会自动执行任何新的变更日志文件（而且足以记住已经运行了哪些脚本）
-
-
 
 
 
@@ -147,22 +141,18 @@ liquibase rollback-to-date --date=2020-05-07
 liquibase update-to-tag --tag=version_test_rollback  --changelog-file=changelog-master.xml
 ```
 
-### mvn中使用rollback
+### Mvn中使用命令
 
 像这类的高级操作，推荐使用命令行来进行操作。命令行的操作比maven插件的更丰富，功能更强大（而且有些是付费才有的）。
 
 **注意事项，这里必须使用cmd的命令来进行，如果使用idea自带的terminal是运行不了的**
 
 ```
-mvn liquibase:rollback -Dliquibase.rollbackTag=version_test_rollback
+mvn liquibase:rollback -Dliquibase.rollbackTag=v1.0
 ```
 
 ```
 mvn liquibase:rollback -Dliquibase.rollbackCount=1
-```
-
-```
-mvn liquibase:updateToTag -Dliquibase.toTag=v1.0
 ```
 
 帮助命令
@@ -173,18 +163,8 @@ mvn liquibase:help
 mvn liquibase mvn liquibase:changelogSyncToTag --help
 ```
 
-回滚的参考文档
+## 使用liquibase的一些注意事项
 
-回滚的时候有一个坑，就是你运行的位置决定了保存到数据库中FileName的位置。
-
-
-
-```
-https://docs.liquibase.com/commands/home.html#database-rollback-commands
-```
-
-参考中文文档
-
-```
-https://www.cnblogs.com/sanri1993/p/12125280.html
-```
+1. SQL迭代的基础上禁止在原有的changeSet上进行修改sql。因为liquibase是以id+author+filename作为唯一值的。
+2. 生产环境建议使用命令行来执行liquibase的语句。因为语句更灵活，而且命令更方便
+3. 

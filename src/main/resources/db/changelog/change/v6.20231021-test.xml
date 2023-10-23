@@ -9,7 +9,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <changeSet id="v6.20231021-test" author="bulingfeng@gmail.com"  runInTransaction="true" runAlways="true">
+    <changeSet id="v6.20231021-test" author="bulingfeng@gmail.com"  runInTransaction="true">
 
         <comment>插入语句</comment>
         <sql>

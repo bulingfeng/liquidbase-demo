@@ -17,6 +17,9 @@
         <sql>
             insert into test_table(name) values('bulingfeng');
         </sql>
+        <rollback>
+            delete from test_table where name='bulingfeng';
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>
