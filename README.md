@@ -78,9 +78,9 @@ liquibase是有一个主文件的，这个主文件内可以执行你想要的sq
 id+author+fileanme形成来作为唯一标识。
 ```
 
-MD5SUM是根据id+author+filename中的语句形成的一个MD5值。如果已经运行过的sql，你修改了sql内容，这个时候就会报错。此时只是以运行sql的内容为准，多加空格之类的并不能影响MD5SUM的值。
+**MD5SUM是根据id+author+filename中的SQL语句形成的一个MD5值。如果已经运行过的sql，你修改了sql内容，这个时候就会报错**。
 
-
+此时只是以运行sql的内容为准，多加空格之类的并不能影响MD5SUM的值。
 
 一个changeset里面的sql可以放多个，这样就可以运行了。
 
@@ -102,7 +102,7 @@ MD5SUM是根据id+author+filename中的语句形成的一个MD5值。如果已�
 回滚到具体某个tag
 
 ```
-liquibase rollback --tag=version_test_rollback
+liquibase rollback --tag=v1.0
 ```
 
 回滚一次
