@@ -169,3 +169,14 @@ mvn liquibase mvn liquibase:changelogSyncToTag --help
 - https://www.cnblogs.com/gao241/archive/2013/03/20/2971526.html
 - https://springboot.io/t/topic/2952  回滚
 - https://docs.liquibase.com/change-types/create-table.html 创建表的一些信息
+
+
+
+
+
+
+
+```
+
+```
+
