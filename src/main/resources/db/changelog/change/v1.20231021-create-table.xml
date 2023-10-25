@@ -11,7 +11,7 @@
 
 
     <changeSet id="v1.20231021-create-table-1" author="bulingfeng@gmail.com" >
-        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="test_table表已存在" onErrorMessage="执行1:LinRuChang的前置条件过程中发生异常">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="test_table表已存在" onErrorMessage="执行的前置条件过程中发生异常">
             <not>
                 <tableExists tableName="test_table"></tableExists>
             </not>
